@@ -791,9 +791,9 @@ movetab(const Arg *arg)
 	if (sel < 0)
 		return;
 
-	c = (sel + arg->i) % nclients;
-	if (c < 0)
-		c += nclients;
+	c = sel + arg->i;
+	if (c < 0 || c == nclients)
+    return;
 
 	if (c == sel)
 		return;
