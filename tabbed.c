@@ -902,10 +902,8 @@ rotate(const Arg *arg)
 	} else if (sel > -1) {
 		/* Rotating in an arg->i step around the clients. */
 		nsel = sel + arg->i;
-		while (nsel >= nclients)
-			nsel -= nclients;
-		while (nsel < 0)
-			nsel += nclients;
+    if (nsel < 0 || nsel >= nclients)
+      nsel = sel;
 		focus(nsel);
 	}
 }
